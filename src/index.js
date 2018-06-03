@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 
+const Wrapper = styled.div`
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%vw;
+  flex-direction: column;
+`;
+
 const Circle = styled.div`
   border-radius: 50%;
   height: 100%;
@@ -133,6 +142,15 @@ const MinuteBar = Bar.extend`
   left: calc(50% - 8px);
 `;
 
+const Shadow = styled.div`
+  background: red;
+  border-radius: 50%;
+  height: 15px;
+  width: 275px;
+  margin-top: 25px;
+  background-color: #DEDEDE;
+`;
+
 class Watch extends Component {
 
   constructor(props) {
@@ -165,35 +183,38 @@ class Watch extends Component {
     const minutes = Math.floor(this.state.s / 60);
     const hours = Math.floor(minutes / 60);
     return (
-      <WatchEdge>
-        <WatchEdge1>
-          <WatchEdge2>
-            <WatchEdge3>
-              <WatchEdge4>
-                <WatchEdge5>
-                  <WatchEdge6>
-                    <WatchFace>
-                      {ticks.map(this.renderTick)}
-                      <RotationCircle n={(hours * 30) + (((minutes % 60) / 60) * 30)} >
-                        <HourBar />
-                      </RotationCircle>
-                      <RotationCircle n={((minutes % 60) * 6) + ((seconds / 60) * 6)} >
-                        <MinuteBar />
-                      </RotationCircle>
-                      <RotationCircle n={(seconds % 60) * 6} >
-                        <SecondCircle />
-                        <SecondBar />
-                      </RotationCircle>
-                      <SecondInnerCircle />
-                      <SecondOuterCircle />
-                    </WatchFace>
-                  </WatchEdge6>
-                </WatchEdge5>
-              </WatchEdge4>
-            </WatchEdge3>
-          </WatchEdge2>
-        </WatchEdge1>
-      </WatchEdge>
+      <Wrapper>
+        <WatchEdge>
+          <WatchEdge1>
+            <WatchEdge2>
+              <WatchEdge3>
+                <WatchEdge4>
+                  <WatchEdge5>
+                    <WatchEdge6>
+                      <WatchFace>
+                        {ticks.map(this.renderTick)}
+                        <RotationCircle n={(hours * 30) + (((minutes % 60) / 60) * 30)} >
+                          <HourBar />
+                        </RotationCircle>
+                        <RotationCircle n={((minutes % 60) * 6) + ((seconds / 60) * 6)} >
+                          <MinuteBar />
+                        </RotationCircle>
+                        <RotationCircle n={(seconds % 60) * 6} >
+                          <SecondCircle />
+                          <SecondBar />
+                        </RotationCircle>
+                        <SecondInnerCircle />
+                        <SecondOuterCircle />
+                      </WatchFace>
+                    </WatchEdge6>
+                  </WatchEdge5>
+                </WatchEdge4>
+              </WatchEdge3>
+            </WatchEdge2>
+          </WatchEdge1>
+        </WatchEdge>
+        <Shadow />
+      </Wrapper>
     );
   }
 }
