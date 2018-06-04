@@ -157,7 +157,7 @@ class Watch extends Component {
     super(props);
     const date = new Date();
     this.state = {
-      s: date.getSeconds() + (date.getMinutes() * 60) + ((date.getHours() % 12) * 3600) - 1,
+      s: date.getSeconds() + (date.getMinutes() * 60) + ((date.getHours() % 12) * 3600),
     }
   }
 
